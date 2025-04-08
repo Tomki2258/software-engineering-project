@@ -1,0 +1,60 @@
+PIJALNIA PIWA ------- PEREŁKA
+
+
+	KLIENT PROWADZI PIJALNIE PIWA
+
+	Istnieje potrzeba stworzenia systemu dającego możliwość prostego zamawiaja klientom baru napojów wyskokowych ( wysoko procentowych ( alkoholowych ) )
+	Oraz ułatwienia zarządzania barem dla obsługi , pozwalający monitorować stan zamówień jak i stanów produktów
+
+	PRZYPADKI UŻYCIA SYSTEMU
+
+		KLIENT:
+			- Składanie zamówień
+			- Tworzenie większych zamówień ( koszyk )
+			- Historia zamówień
+			- Sprawdzenie swojego stanu konta
+			- Sprawdzenie menu
+			- Składanie rezerwacji
+
+		Obsługa
+			- Zarządzanie zamówieniami
+			- Sprawdzanie oraz zarządzanie stanem magazynu
+			- Wizualiazcja zajętych miejsc w barze
+			- Dodawanie pozycji w menu
+			- Zarządzanie rezerwacjami
+			- Wydawanie rachunków
+
+// USER STORIES
+
+
+Przykładowe User Stories:
+- Zamówienie wielu trunków:
+    1. Sprawdzenie menu
+    2. Dodanie trunków do koszyka
+    3. Złożenie zamówieniami
+
+    Opcjonalne:
+    4. Sprawdzenie historii zamówień
+    5. Sprawdzenie stanu konta
+
+
+- Przyjęcie rezerwacji:
+    1. Sprawdzenie prośby o rezerwację
+    2. Sprawdzenie stanu magazynu
+    3. Sprawdzenie innych rezerwacji
+    4. Zaakceptowanie / Odrzucenie prośby o rezerwację
+
+    Opcjonalne:
+    5. Wizualizacja miejsc zajętych (w danym czasie)
+    6. Przygotowanie zamówionych trunków (lub zarezerwowanie ich aby w magazynie były)
+
+
+- Dodanie nowej pozycji w menu:
+    1. Sprawdzenie stanu magazynu
+    2. Sprawdzenie menu
+    3. Dodanie pozycji w menu
+
+    Opcjonalne:
+    4. Sprawdzenie byłych zamówień (bardziej w celu sprawdzenia czy dodanie jest dobrym pomysłem patrząc na to co się sprzedaje)
+    5. Zamówienie brakujących komponentów trunku
+    6. Usunięcie innej pozycji w menu (w celu stworzenia miejsca na nowe jeżeli jest to potrzebne)
