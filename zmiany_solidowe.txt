@@ -1,6 +1,6 @@
-S) Większość naszych klas, moim zdaniem, trzyma się zasady Single Responsibility (robi to co powinno robić według tego co moglibyśmy się spodziewać po danej klasie). Jedynymi klasami, z którymi mogłaby pojawić się niepewność były by Serwer i Rachunek. Jednakże, Serwer to klasa administracyjna i moim zdaniem wszystko co się w niej znajduje, pasuje do odpowiedzialności jakie powinna spełniać. Za to klasa Rachunek ma za zadanie złączyć wiele różnych informacji do jednego miejsca i z tego powodu duża liczba różnych funkcji również pasuje do jej założeń.
+S) Większość naszych klas trzyma się zasady Single Responsibility, dana klasa robi to co do niej należy i nic więcej. Jedynymi klasami, z którymi mogłaby pojawić się niepewność były by Serwer i Rachunek. Jednakże, Serwer to klasa administracyjna i moim zdaniem wszystko co się w niej znajduje, pasuje do odpowiedzialności jakie powinna spełniać. Za to interfejs Rachunek ma za zadanie złączyć wiele różnych informacji do jednego miejsca i z tego powodu duża liczba różnych funkcji również pasuje do jej założeń.
 
-O) W naszym projekcie klasy mają minimalną ilość elementów i funkcji - są ograniczone do rzeczy potrzebnych do poprawnego działania systemu przez nas tworzonego. Miejscem gdzie na pewno wystąpiłyby nowe addycje do naszego programu byłaby klasa Produkt. Podczas tworzenia jej koncepcji, wzięliśmy to pod uwagę i zaplanowaliśmy w jaki sposób rozszerzenia powinny mieć miejsce - rozdzielając sprzedawane produkty na klasy Jedzenie i Napoj. Posiadają one wymagane przez nasz system informacje, aczkolwiek pozostawiają ewentualne miejsce na rozszerzenie w prosty sposób.
+O) W naszym projekcie klasy mają minimalną ilość elementów i funkcji - są ograniczone do rzeczy potrzebnych do poprawnego działania systemu przez nas tworzonego. Miejscem gdzie na pewno wystąpiłyby nowe funkcje do naszego programu byłaby klasa Produkt. Podczas tworzenia jej koncepcji, wzięliśmy to pod uwagę i zaplanowaliśmy w jaki sposób rozszerzenia powinny mieć miejsce - rozdzielając sprzedawane produkty na klasy Jedzenie i Napoj. Posiadają one wymagane przez nasz system informacje, aczkolwiek pozostawiają ewentualne miejsce na rozszerzenie w prosty sposób.
 
 L) ???
 
@@ -8,4 +8,4 @@ I) U nas wrzuciliśmy wszystkie funkcje (w tym administracyjne) do ogólnego dos
 	- Menu zostało rozdzielone na zwykłe Menu które dotychczas było używane oraz MenuDlaObslugi, które posiada funkcje używane tylko przez obsługę
 	- Produkt został rozdzielony na dotychczasowy Produkt z funkcjami wymaganymi dla klienta i przydatnymi dla obsługi oraz ProduktDlaObslugi posiadający implementacje funkcji administracyjnych
 
-D) ???
+D) Klasa serwer nie jest zależna od żadnych instalcji Obsluga oraz Rachunek, implemenuje ona za to ich interfejsy. Dzięki temu jest ona odporna na zmiany w tych klasach
