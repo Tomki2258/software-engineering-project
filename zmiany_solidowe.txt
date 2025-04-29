@@ -4,7 +4,7 @@ O) W naszym projekcie klasy mają minimalną ilość elementów i funkcji - są 
 
 L) W projekcie jest realizowana zasada Liskov Substitution Principle np.:
 	- klasa Produkt jest rozszerzona o klasy Napój i Jedzenie dodając wartości: waga, zawartość alkoholu itp. klasy 	  pochodne nie zmieniają klasy bazowej.
-	- Klasa Obsluga implementuje interfejs, realizując wszystkie jej metody.
+	- Klasa Obsluga implementuje interfejs IObsluga, realizując wszystkie jej metody.
 
 I) U nas wrzuciliśmy wszystkie funkcje (w tym administracyjne) do ogólnego dostępu do klasy. W związku z tym zostały wprowadzone poniższe poprawki:
 	- Menu zostało rozdzielone na zwykłe Menu które dotychczas było używane oraz MenuDlaObslugi, które posiada funkcje używane tylko przez obsługę
