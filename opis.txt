@@ -1,12 +1,12 @@
 PIJALNIA PIWA ------- PEREŁKA
 
 
-	KLIENT PROWADZI PIJALNIE PIWA
+KLIENT PROWADZI PIJALNIE PIWA
 
-	Istnieje potrzeba stworzenia systemu dającego możliwość prostego zamawiaja klientom baru napojów wyskokowych ( wysoko procentowych ( alkoholowych ) )
-	Oraz ułatwienia zarządzania barem dla obsługi , pozwalający monitorować stan zamówień jak i stanów produktów
+Istnieje potrzeba stworzenia systemu dającego możliwość prostego zamawiaja klientom baru napojów wyskokowych ( wysoko procentowych ( alkoholowych ) )
+Oraz ułatwienia zarządzania barem dla obsługi , pozwalający monitorować stan zamówień jak i stanów produktów
 
-	PRZYPADKI UŻYCIA SYSTEMU
+PRZYPADKI UŻYCIA SYSTEMU
 
 		KLIENT:
 			- Składanie zamówień
