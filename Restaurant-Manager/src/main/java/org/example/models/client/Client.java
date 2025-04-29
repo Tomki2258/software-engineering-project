@@ -9,13 +9,16 @@ public class Client {
     private final String uid;
 
 
-    //
+    //Nowy Klient przyhcodzi do baru
     public Client(int wartoscPortfela, int wiek) {
         this.wartoscPortfela = wartoscPortfela;
         this.wiek = wiek;
         this.uid = UUID.randomUUID().toString();
     }
 
+
+    //Klient który przyszedł więcej niż raz i jego dane bierzymy z serwera
+    //(ewentualnie jakieś sprawdzanie żeby było profeszonal)
     public Client(int wartoscPortfela, int wiek, String uid) {
         this.wartoscPortfela = wartoscPortfela;
         this.wiek = wiek;
