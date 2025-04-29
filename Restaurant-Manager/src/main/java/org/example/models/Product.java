@@ -6,6 +6,13 @@ public class Product {
     private int availableCount;
     private String UID;
 
+    public Product(float price, String name, int availableCount, String UID) {
+        this.price = price;
+        this.name = name;
+        this.availableCount = availableCount;
+        this.UID = UID;
+    }
+
     public float getPrice(){
         return price;
     }

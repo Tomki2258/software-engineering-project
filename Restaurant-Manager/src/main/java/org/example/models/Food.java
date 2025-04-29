@@ -5,6 +5,10 @@ public class Food extends Product{
     private boolean isVege;
     private int calories;
 
+    public Food(float price, String name, int availableCount, String UID) {
+        super(price, name, availableCount, UID);
+    }
+
     public int getWeight() {
         return weight;
     }
