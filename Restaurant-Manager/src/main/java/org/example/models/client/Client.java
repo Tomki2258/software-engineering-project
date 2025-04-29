@@ -9,7 +9,7 @@ public class Client {
     private final String uid;
 
 
-    //Nowy Klient przyhcodzi do baru
+    //Nowy Klient przychodzi do baru (generujemy uid)
     public Client(int wartoscPortfela, int wiek) {
         this.wartoscPortfela = wartoscPortfela;
         this.wiek = wiek;
