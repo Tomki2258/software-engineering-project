@@ -1,17 +1,22 @@
 package org.example.models;
 
-import java.io.File;
+import com.google.gson.reflect.TypeToken;
+
 import java.net.URI;
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import com.umcsuser.carrent.utils.JsonFileStorage;
+
 public class Menu implements IMenu {
     private List<Product> productList = new ArrayList<>();
-    private static final URI PRODUCTS_PATH = URI.create("org/example/data/products.json");
+    private static final URI PRODUCTS_PATH = URI.create("src/main/java/org/example/data/products.json");
+    private final JsonFileStorage<Product> storage =
+            new JsonFileStorage<>(String.valueOf(PRODUCTS_PATH), new TypeToken<List<Product>>() {
+            }.getType());
 
-    Menu() {
+    public Menu() {
         loadProducts();
     }
 
@@ -19,18 +24,23 @@ public class Menu implements IMenu {
         return productList;
     }
 
+    public void printProducts() {
+        for (Product product : productList) {
+            System.out.println(product.getName() + " " + product.getPrice());
+        }
+    }
+
     private void loadProducts() {
-        //File productsFile  = new File(PRODUCTS_PATH);
-        Product product = new Drink(18,
-                "Pifko Perła",
-                15,
-                UUID.randomUUID().toString(), 5.5,
-                2000);
-        productList.add(product);
+        storage.load();
     }
 
     @Override
     public boolean addProduct(Product product) {
-        return false;
+        productList.add(product);
+        return true;
+    }
+
+    public void save() {
+        storage.save(productList);
     }
 }
