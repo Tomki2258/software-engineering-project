@@ -1,12 +1,15 @@
 package org.example.models;
 
-public class Food extends Product{
+public class Food extends Product {
     private int weight;
     private boolean isVege;
     private int calories;
 
-    public Food(float price, String name, int availableCount, String UID) {
+    public Food(String UID,String name,float price, int availableCount, int weight, boolean isVege, int calories) {
         super(price, name, availableCount, UID);
+        this.weight = weight;
+        this.isVege = isVege;
+        this.calories = calories;
     }
 
     public int getWeight() {
@@ -19,5 +22,30 @@ public class Food extends Product{
 
     public boolean isVege() {
         return isVege;
+    }
+
+
+    @Override
+    public String csv() {
+        return String.format("FOOD;%s;%s;%f;%d;%d;%b;%d"
+                , super.getUUID()
+                , super.getName()
+                , super.getPrice()
+                , super.getAvailableCount()
+                , getWeight()
+                , isVege()
+                ,getCalories());
+    }
+
+    @Override
+    public String describe() {
+        return String.format("Food - UUID:%s Name:%s Price:%f Count:%d Weight:%d IsVege:%b Calories:%d"
+                , super.getUUID()
+                , super.getName()
+                , super.getPrice()
+                , super.getAvailableCount()
+                , getWeight()
+                , isVege()
+                ,getCalories());
     }
 }

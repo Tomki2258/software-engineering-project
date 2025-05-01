@@ -1,6 +1,6 @@
 package org.example.models;
 
-public class Product {
+public abstract class Product {
     private float price;
     private String name;
     private int availableCount;
@@ -13,10 +13,22 @@ public class Product {
         this.UID = UID;
     }
 
-    public float getPrice(){
-        return price;
+    public String getUUID() {
+        return UID;
     }
-    public String getName(){
+
+    public String getName() {
         return name;
     }
+
+    public float getPrice() {
+        return price;
+    }
+
+    public int getAvailableCount() {
+        return availableCount;
+    }
+
+    public abstract String csv();
+    public abstract String describe();
 }
