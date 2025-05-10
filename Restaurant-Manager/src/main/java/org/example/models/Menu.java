@@ -14,6 +14,8 @@ import java.util.Scanner;
 import com.umcsuser.carrent.utils.JsonFileStorage;
 import org.example.models.product.Drink;
 import org.example.models.product.Food;
+import org.example.models.product.IProduct;
+import org.example.models.product.Product;
 
 public class Menu implements IMenu {
     private List<Product> productList = new ArrayList<>();
@@ -23,11 +25,7 @@ public class Menu implements IMenu {
             }.getType());
 
     public Menu() {
-        productList =  loadProducts();
-    }
-
-    public List<Product> getProductList() {
-        return productList;
+        productList = loadProducts();
     }
 
     public void printProducts() {
@@ -80,6 +78,18 @@ public class Menu implements IMenu {
     public boolean addProduct(Product product) {
         productList.add(product);
         return true;
+    }
+
+    @Override
+    public boolean removeProduct(int index) {
+        productList.remove(index);
+        return true;
+    }
+
+    @Override
+    public List<IProduct> getProductList() {
+        List<IProduct> newList = new ArrayList<>(productList);
+        return newList;
     }
 
     public void save() {

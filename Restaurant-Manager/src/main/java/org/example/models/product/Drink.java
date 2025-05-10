@@ -1,7 +1,5 @@
 package org.example.models.product;
 
-import org.example.models.Product;
-
 public class Drink extends Product {
     private double alcoholAmount;
     private int volume;

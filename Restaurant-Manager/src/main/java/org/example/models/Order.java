@@ -1,5 +1,7 @@
 package org.example.models;
 
+import org.example.models.product.Product;
+
 import java.util.List;
 
 public class Order {

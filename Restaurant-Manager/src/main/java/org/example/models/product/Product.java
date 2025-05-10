@@ -1,6 +1,6 @@
-package org.example.models;
+package org.example.models.product;
 
-public abstract class Product {
+public abstract class Product implements IProduct {
     private float price;
     private String name;
     private int availableCount;
@@ -27,6 +27,26 @@ public abstract class Product {
 
     public int getAvailableCount() {
         return availableCount;
+    }
+
+    @Override
+    public void setPrice(float price) {
+        this.price = price;
+    }
+
+    @Override
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public Boolean isAvailable() {
+        return availableCount > 0;
+    }
+
+    @Override
+    public String returnUID() {
+        return UID;
     }
 
     public abstract String csv();

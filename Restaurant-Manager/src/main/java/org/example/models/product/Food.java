@@ -1,7 +1,5 @@
 package org.example.models.product;
 
-import org.example.models.Product;
-
 public class Food extends Product {
     private int weight;
     private boolean isVege;
