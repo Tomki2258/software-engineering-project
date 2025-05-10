@@ -10,9 +10,10 @@ import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.util.UUID;
 
 import com.umcsuser.carrent.utils.JsonFileStorage;
+import org.example.models.product.Drink;
+import org.example.models.product.Food;
 
 public class Menu implements IMenu {
     private List<Product> productList = new ArrayList<>();

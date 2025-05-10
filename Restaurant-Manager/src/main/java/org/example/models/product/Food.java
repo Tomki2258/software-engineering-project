@@ -1,4 +1,6 @@
-package org.example.models;
+package org.example.models.product;
+
+import org.example.models.Product;
 
 public class Food extends Product {
     private int weight;

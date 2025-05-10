@@ -1,4 +1,6 @@
-package org.example.models;
+package org.example.models.rachunek;
+
+import org.example.models.Order;
 
 import java.util.Date;
 import java.util.UUID;

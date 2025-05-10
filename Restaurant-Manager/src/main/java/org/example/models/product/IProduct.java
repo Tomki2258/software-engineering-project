@@ -1,4 +1,4 @@
-package org.example.models;
+package org.example.models.product;
 
 public interface IProduct {
     public void setPrice(float price);
