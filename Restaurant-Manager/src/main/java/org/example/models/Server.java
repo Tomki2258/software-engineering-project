@@ -24,6 +24,11 @@ public class Server {
     }
 
     // TODO zrobić closeDay bo również nie wiem jak to tak właściwie ma działać
+    /*
+     można to rozomieć jako podsumowanie czyli:
+     - ile zrealizowanych transakcji
+     - ile zarobiliśmy
+     */
     public void closeDay() {
 
     }
