@@ -33,9 +33,9 @@ public class ClientFactory {
         return new Client(
                 splitted[0],
                 Integer.parseInt(splitted[1]),
-                Integer.parseInt(splitted[1]),
-                splitted[2],
-                splitted[3]
+                Integer.parseInt(splitted[2]),
+                splitted[3],
+                splitted[4]
         );
     }
     public void save(List<Client> clientList){

@@ -1,5 +1,6 @@
 package org.example.models.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import org.example.factories.ClientFactory;
@@ -9,19 +10,14 @@ import org.example.models.staff.Staff;
 import org.example.models.client.Client;
 
 
-public class AuthService {
-    private final ClientFactory clientFactory;
-    private final StaffFactory staffFactory;
-    private final Server server;
-
-    public AuthService(ClientFactory clientFactory, Server server,StaffFactory staffFactory) {
-        this.clientFactory = clientFactory;
-        this.server = server;
-        this.staffFactory = staffFactory;
+public class AuthService { private List<Client> clientList = new ArrayList<>();
+    private List<Staff> staffList = new ArrayList<>();
+    public AuthService(ClientFactory clientFactory,StaffFactory staffFactory) {
+        clientList = clientFactory.load();
+        staffList = staffFactory.loadStaff();
     }
 
     public Optional<Client> loginAsClient(String login, String password) {
-        List<Client> clientList = clientFactory.load();
         for (Client client : clientList) {
             if(client.getLogin().equals(login) && client.getPassword().equals(password)) {
                 return Optional.of(client);
@@ -32,8 +28,6 @@ public class AuthService {
     }
 
     public Optional<Staff> loginAsStaff(String login, String password) {
-        List<Staff> staffList = staffFactory.loadStaff();
-
         for (Staff staff : staffList) {
             if (staff.getLogin().equals(login) && staff.getPassword().equals(password)) {
                 return Optional.of(staff);
