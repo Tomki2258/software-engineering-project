@@ -14,7 +14,7 @@ import java.util.Scanner;
 public class ClientFactory {
     private static final URI CLIENT_PATH = URI.create("src/main/java/org/example/data/client.csv");
 
-    private List<Client> load(){
+    public List<Client> load(){
         List<Client> loaded = new ArrayList<>();
         File file = new File(CLIENT_PATH);
         try {
