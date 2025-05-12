@@ -23,6 +23,12 @@ public class Client {
         this.wiek = wiek;
         this.uid = uid;
     }
+    // Ludzki dla mnie konstruktor - tomek
+    public Client(String uid,int age,int money){
+        this.uid =uid;
+        this.wiek = age;
+        this.wartoscPortfela = money;
+    }
 
     public void zaplac(float kwota, float napiwek) {
         //zakładam, że to będzie działać na zasadzie pobierania wartości z rachunku lub na odwrót
@@ -44,5 +50,8 @@ public class Client {
 
     public int getWartoscPortfela() {
         return wartoscPortfela;
+    }
+    public String toCSV(){
+        return String.format("%s;%d;%d",this.uid,this.wiek,this.wartoscPortfela);
     }
 }
