@@ -43,6 +43,14 @@ public class Client {
         */
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
     public int zwrocWiek() {
         return wiek;
     }
