@@ -6,7 +6,7 @@ import org.example.models.staff.ENSpecialization;
 
 public class Staff implements IStaff{
 
-    private int staffId;
+    private final int staffId;
     private String login;
     private String password;
 //    private ENSpecialization specialization;
@@ -19,6 +19,14 @@ public class Staff implements IStaff{
         this.password = password;
         this.specialization = specialization;
         this.menu = menu;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public String getPassword() {
+        return password;
     }
 
     @Override
