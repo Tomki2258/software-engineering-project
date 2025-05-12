@@ -35,6 +35,11 @@ public class Menu implements IMenu {
             System.out.println(product.describe());
         }
     }
+    public void printMenuProducts() {
+        for (Product product : productList) {
+            System.out.println(product.describeMenu());
+        }
+    }
 
     @Override
     public boolean addProduct(Product product) {

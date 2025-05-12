@@ -32,6 +32,7 @@ public class StaffService {
                         break;
                 }
                 String[] splitted = line.split(";");
+                // TODO dodawanie produktu ogólnie
                 break;
         }
     }

@@ -39,8 +39,18 @@ public class Food extends Product {
 
     @Override
     public String describe() {
-        return String.format("Food - UUID:%s Name:%s Price:%f Count:%d Weight:%d IsVege:%b Calories:%d"
-                , super.getUUID()
+        return String.format("Name:%s Price:%f Count:%d Weight:%d IsVege:%b Calories:%d"
+                , super.getName()
+                , super.getPrice()
+                , super.getAvailableCount()
+                , getWeight()
+                , isVege()
+                ,getCalories());
+    }
+
+    @Override
+    public String describeMenu() {
+        return String.format("Name:%s Price:%f Count:%d Weight:%d IsVege:%b Calories:%d"
                 , super.getName()
                 , super.getPrice()
                 , super.getAvailableCount()

@@ -41,4 +41,14 @@ public class Drink extends Product {
                 , getVolume()
                 , getAlcoholAmount());
     }
+
+    @Override
+    public String describeMenu() {
+        return String.format("Name:%s Price:%f Count:%d Volume:%d (ML) Alcohol %f"
+                , super.getName()
+                , super.getPrice()
+                , super.getAvailableCount()
+                , getVolume()
+                , getAlcoholAmount());
+    }
 }
