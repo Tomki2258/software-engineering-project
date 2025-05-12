@@ -38,21 +38,20 @@ public class Server {
 
         return staff;
     }
-    public List<IStaff> loadStaff() {
-        List<IStaff> loaded = new ArrayList<>();
+    public List<Staff> loadStaff() {
+        List<Staff> loaded = new ArrayList<>();
         File file = new File(String.valueOf(STAFF_PATH));
         try {
             Scanner reader = new Scanner(file);
             while(reader.hasNextLine()){
                 String line = reader.nextLine();
                 List<String> splitted = List.of(line.split(";"));
-                loaded.add(buildFromLine(splitted));
+                loaded.add((Staff) buildFromLine(splitted));
             }
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
         return loaded;
-
     }
 
     public void addStaff(IStaff staff) {
