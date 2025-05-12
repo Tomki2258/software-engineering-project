@@ -1,6 +1,7 @@
 package org.example;
 
 import org.example.factories.ClientFactory;
+import org.example.factories.StaffFactory;
 import org.example.models.Server;
 import org.example.models.service.AuthService;
 
@@ -8,9 +9,10 @@ import java.util.Scanner;
 
 public class App {
     private final ClientFactory clientFactory = new ClientFactory();
+    private final StaffFactory staffFactory = new StaffFactory();
     private final Server server = new Server();
 
-    private AuthService authService = new AuthService(clientFactory,server);
+    private final AuthService authService = new AuthService(clientFactory,server,staffFactory);
     public App(){
         app();
     }

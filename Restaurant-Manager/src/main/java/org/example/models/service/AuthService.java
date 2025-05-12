@@ -3,6 +3,7 @@ package org.example.models.service;
 import java.util.List;
 import java.util.Optional;
 import org.example.factories.ClientFactory;
+import org.example.factories.StaffFactory;
 import org.example.models.Server;
 import org.example.models.staff.Staff;
 import org.example.models.client.Client;
@@ -10,11 +11,13 @@ import org.example.models.client.Client;
 
 public class AuthService {
     private final ClientFactory clientFactory;
+    private final StaffFactory staffFactory;
     private final Server server;
 
-    public AuthService(ClientFactory clientFactory, Server server) {
+    public AuthService(ClientFactory clientFactory, Server server,StaffFactory staffFactory) {
         this.clientFactory = clientFactory;
         this.server = server;
+        this.staffFactory = staffFactory;
     }
 
     public Optional<Client> loginAsClient(String login, String password) {
@@ -29,7 +32,7 @@ public class AuthService {
     }
 
     public Optional<Staff> loginAsStaff(String login, String password) {
-        List<Staff> staffList = server.loadStaff();
+        List<Staff> staffList = staffFactory.loadStaff();
 
         for (Staff staff : staffList) {
             if (staff.getLogin().equals(login) && staff.getPassword().equals(password)) {

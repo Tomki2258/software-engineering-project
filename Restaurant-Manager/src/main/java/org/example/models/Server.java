@@ -23,39 +23,10 @@ public class Server {
 
     public Server(IMenu menu) {
         this.menu = menu;
-        staffList = loadStaff();
     }
     public Server() {
-        staffList = loadStaff();
     }
 
-    private IStaff buildFromLine(List<String> splitted){
-        IStaff staff = null;
-        staff = new Staff(
-                Integer.parseInt(splitted.get(0)),  // id
-                splitted.get(1),                    // login
-                splitted.get(2),                    // password
-                splitted.get(3),                    // specialization (done in string this time)
-                menu
-        );
-
-        return staff;
-    }
-    public List<Staff> loadStaff() {
-        List<Staff> loaded = new ArrayList<>();
-        File file = new File(String.valueOf(STAFF_PATH));
-        try {
-            Scanner reader = new Scanner(file);
-            while(reader.hasNextLine()){
-                String line = reader.nextLine();
-                List<String> splitted = List.of(line.split(";"));
-                loaded.add((Staff) buildFromLine(splitted));
-            }
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-        return loaded;
-    }
 
     public void addStaff(Staff staff) {
         staffList.add(staff);
