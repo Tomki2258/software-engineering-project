@@ -38,7 +38,7 @@ public class Server {
 
         return staff;
     }
-    private List<IStaff> loadStaff() {
+    public List<IStaff> loadStaff() {
         List<IStaff> loaded = new ArrayList<>();
         File file = new File(String.valueOf(STAFF_PATH));
         try {
