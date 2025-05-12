@@ -22,7 +22,6 @@ public class ClientFactory {
             while(reader.hasNextLine()){
                 String line = reader.nextLine();
                 loaded.add(build(line));
-
             }
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
@@ -34,7 +33,9 @@ public class ClientFactory {
         return new Client(
                 splitted[0],
                 Integer.parseInt(splitted[1]),
-                Integer.parseInt(splitted[1])
+                Integer.parseInt(splitted[1]),
+                splitted[2],
+                splitted[3]
         );
     }
     public void save(List<Client> clientList){

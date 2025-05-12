@@ -7,7 +7,8 @@ public class Client {
     private int wartoscPortfela;
     private final int wiek;
     private final String uid;
-
+    private String login;
+    private String password;
 
     //Nowy Klient przychodzi do baru (generujemy uid)
     public Client(int wartoscPortfela, int wiek) {
@@ -24,10 +25,12 @@ public class Client {
         this.uid = uid;
     }
     // Ludzki dla mnie konstruktor - tomek
-    public Client(String uid,int age,int money){
+    public Client(String uid,int age,int money,String login,String password){
         this.uid =uid;
         this.wiek = age;
         this.wartoscPortfela = money;
+        this.login = login;
+        this.password = password;
     }
 
     public void zaplac(float kwota, float napiwek) {
