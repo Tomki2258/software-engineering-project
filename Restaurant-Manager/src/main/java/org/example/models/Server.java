@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Server {
-    private List<IStaff> staffList = new ArrayList<>();
+    private List<Staff> staffList = new ArrayList<>();
     private List<IRachunek> rachunekList = new ArrayList<>();
     // TODO ogarnąć co z rachunkami będziem robić
     private static final URI STAFF_PATH = URI.create("src/main/java/org/example/data/staff.csv");
@@ -25,14 +25,17 @@ public class Server {
         this.menu = menu;
         staffList = loadStaff();
     }
+    public Server() {
+        staffList = loadStaff();
+    }
 
     private IStaff buildFromLine(List<String> splitted){
         IStaff staff = null;
         staff = new Staff(
-                Integer.parseInt(splitted.get(1)),  // id
-                splitted.get(2),                    // login
-                splitted.get(3),                    // password
-                splitted.get(4),                    // specialization (done in string this time)
+                Integer.parseInt(splitted.get(0)),  // id
+                splitted.get(1),                    // login
+                splitted.get(2),                    // password
+                splitted.get(3),                    // specialization (done in string this time)
                 menu
         );
 
@@ -54,7 +57,7 @@ public class Server {
         return loaded;
     }
 
-    public void addStaff(IStaff staff) {
+    public void addStaff(Staff staff) {
         staffList.add(staff);
     }
 

@@ -2,16 +2,15 @@ package org.example.models.service;
 
 import java.util.List;
 import java.util.Optional;
-import org.example.ClientFactory;
+import org.example.factories.ClientFactory;
 import org.example.models.Server;
-import org.example.models.staff.IStaff;
 import org.example.models.staff.Staff;
 import org.example.models.client.Client;
 
 
 public class AuthService {
-    ClientFactory clientFactory;
-    Server server;
+    private final ClientFactory clientFactory;
+    private final Server server;
 
     public AuthService(ClientFactory clientFactory, Server server) {
         this.clientFactory = clientFactory;

@@ -1,4 +1,4 @@
-package org.example;
+package org.example.factories;
 
 import org.example.models.client.Client;
 
@@ -16,7 +16,7 @@ public class ClientFactory {
 
     public List<Client> load(){
         List<Client> loaded = new ArrayList<>();
-        File file = new File(CLIENT_PATH);
+        File file = new File(String.valueOf(CLIENT_PATH));
         try {
             Scanner reader = new Scanner(file);
             while(reader.hasNextLine()){
