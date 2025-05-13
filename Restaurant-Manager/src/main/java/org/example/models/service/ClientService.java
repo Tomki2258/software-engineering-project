@@ -1,5 +1,6 @@
 package org.example.models.service;
 
+import org.example.NoMoneyException;
 import org.example.models.Menu;
 import org.example.models.Order;
 import org.example.models.Server;
@@ -46,7 +47,11 @@ public class ClientService {
                 }
             }
             case "3" -> {
-                finalizeBill();
+                try {
+                    finalizeBill();
+                } catch (NoMoneyException e) {
+                    throw new RuntimeException(e);
+                }
             }
 
             default -> {
@@ -55,7 +60,7 @@ public class ClientService {
         }
     }
 
-    private void finalizeBill() {
+    private void finalizeBill() throws NoMoneyException {
         Bill bill = new Bill(order);
         Scanner scanner = new Scanner(System.in);
         System.out.println("Chcesz dać napiwek (TAK/NIE)?");
@@ -66,9 +71,12 @@ public class ClientService {
             bill.setTip(tip);
         }
         bill.close();
-        client.reduceMoneyAmount(bill.getTotalValue());
-        bill.describe();
-        working = false;
-        server.addBill(bill);
+        if(client.reduceMoneyAmount(bill.getTotalValue())){
+            bill.describe();
+            working = false;
+            server.addBill(bill);
+        }else{
+            throw new NoMoneyException(client);
+        }
     }
 }
