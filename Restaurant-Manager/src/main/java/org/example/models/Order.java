@@ -10,7 +10,7 @@ import java.util.List;
 public class Order {
     List<Product> productList = new ArrayList<>();
     public Boolean addProduct(Product product, Client client, Staff staff){
-        if(staff.verifyClient(client)) {
+        if(staff.verifyClient(client) && product.getAvailableCount() > 0) {
             productList.add(product);
             printProducts();
             return true;

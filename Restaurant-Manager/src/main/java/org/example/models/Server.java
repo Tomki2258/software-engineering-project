@@ -21,6 +21,8 @@ public class Server {
         this.menu = menu;
     }
     public Server() {
+        // TODO Dostosowanie ładowania zamówień do Product
+        //billList = billFactory.load();
     }
 
 

@@ -17,11 +17,12 @@ public class ClientService {
     private Menu menu = new Menu();
     private boolean working = true;
     private final Server server;
-    public ClientService(Client client, Staff staff,Server server) {
+
+    public ClientService(Client client, Staff staff, Server server) {
         this.client = client;
         this.staff = staff;
         this.server = server;
-        while(working) {
+        while (working) {
             App();
         }
         menu.save();
@@ -32,36 +33,40 @@ public class ClientService {
         Scanner scanner = new Scanner(System.in);
         String input = scanner.nextLine();
         switch (input) {
-            case "1":
+            case "1" -> {
                 menu.printMenuProducts();
-                break;
-            case "2":
+            }
+            case "2" -> {
                 menu.printMenuProducts();
                 System.out.println("Podaj index produktu do dodania");
                 input = scanner.nextLine();
                 int inputInt = Integer.parseInt(input) - 1;
-                if (order.addProduct(menu.getProductList().get(inputInt),client,staff)) {
+                if (order.addProduct(menu.getProductList().get(inputInt), client, staff)) {
                     menu.getProductList().get(inputInt).reduceAvailableCount();
                 }
-                break;
-            case "3":
+            }
+            case "3" -> {
                 finalizeBill();
-                break;
-            default:
-                break;
+            }
+
+            default -> {
+
+            }
         }
     }
-    private void finalizeBill(){
+
+    private void finalizeBill() {
         Bill bill = new Bill(order);
         Scanner scanner = new Scanner(System.in);
         System.out.println("Chcesz dać napiwek (TAK/NIE)?");
         String input = scanner.nextLine();
-        if(input.equals("TAK")){
+        if (input.equals("TAK")) {
             System.out.println("Podaj kwote napiwku");
             float tip = scanner.nextFloat();
             bill.setTip(tip);
         }
         bill.close();
+        client.reduceMoneyAmount(bill.getTotalValue());
         bill.describe();
         working = false;
         server.addBill(bill);
