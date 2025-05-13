@@ -34,29 +34,42 @@ public class StaffService {
                 switch (typeInput){
                     case "NAPOJ":
                         String prod = scanner.nextLine();
-                        String[] splitted = line.split(";");
-                        Product p = new Drink(
-                                splitted[0],                        // Name
-                                Float.parseFloat(splitted[1]),      // price
-                                Integer.parseInt(splitted[2]),      // availableCount
-                                Double.parseDouble(splitted[3]),    // alcoholAmount
-                                Integer.parseInt(splitted[4])       // volume
-                        );
+                        Product p = getProductDrink(line);
+                        menu.addProduct(p);
+
                         break;
                     case "JEDZENIE":
                         String prod2 = scanner.nextLine();
-                        String[] splitted2 = prod2.split(";");
-                        Product p2 = new Food(
-                                splitted2[0],                       // name
-                                Float.parseFloat(splitted2[1]),     // price
-                                Integer.parseInt(splitted2[2]),     // availableCount
-                                Integer.parseInt(splitted2[3]),     // weight
-                                Boolean.parseBoolean(splitted2[4]), // isVege
-                                Integer.parseInt(splitted2[5])      // calories
-                        );
+                        Product p2 = getProductFood(prod2);
+                        menu.addProduct(p2);
                         break;
                 }
                 break;
         }
+    }
+
+    private static Product getProductDrink(String line) {
+        String[] splitted = line.split(";");
+        Product p = new Drink(
+                splitted[0],                        // Name
+                Float.parseFloat(splitted[1]),      // price
+                Integer.parseInt(splitted[2]),      // availableCount
+                Double.parseDouble(splitted[3]),    // alcoholAmount
+                Integer.parseInt(splitted[4])       // volume
+        );
+        return p;
+    }
+
+    private static Product getProductFood(String prod2) {
+        String[] splitted2 = prod2.split(";");
+        Product p2 = new Food(
+                splitted2[0],                       // name
+                Float.parseFloat(splitted2[1]),     // price
+                Integer.parseInt(splitted2[2]),     // availableCount
+                Integer.parseInt(splitted2[3]),     // weight
+                Boolean.parseBoolean(splitted2[4]), // isVege
+                Integer.parseInt(splitted2[5])      // calories
+        );
+        return p2;
     }
 }
