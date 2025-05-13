@@ -13,58 +13,96 @@ public class StaffService {
 
     public StaffService(Staff staff){ App(); }
 
-    private void App(){
-        System.out.println("Menu dla obsługi\n1:Wypisz aktualne produkti\n2:Dodaj produkt");
+    private void App() {
+        System.out.println(
+                "Menu dla obsługi"
+                + "\n1:Wypisz aktualne produkti"
+                + "\n2:Dodaj produkt"
+        );
+
         Scanner scanner = new Scanner(System.in);
         String input = scanner.nextLine();
-        switch (input){
-            case "1":
+        switch (input) {
+            case "1" -> {
                 menu.printProducts();
-                break;
-            case "2":
+            }
+            case "2" -> {
                 System.out.println("Który typ produktu chcesz dodać?");
+
                 String typeInput = scanner.nextLine();
-                System.out.println("Podaj dane produktu do dodania (spacje zastąp znakiem ';')");
-                switch (typeInput){
-                    case "NAPOJ" -> {
-                        String prod = scanner.nextLine();
-                        Product p = getProductDrink(prod);
-                        menu.addProduct(p);
-                    }
-                    case "JEDZENIE" -> {
-                        String prod = scanner.nextLine();
-                        Product p = getProductFood(prod);
-                        menu.addProduct(p);
-                    }
-                    default -> {
-                        System.out.println("Bład: niepoprawne  wejście");
-                        System.exit(0);
+                System.out.println(
+                        "Podaj dane produktu do dodania (spacje zastąp znakiem ';')" +
+                                "\nJeżeli chcesz wyjśc, napisz 'exit'"
+                );
+                while (true) {
+                    switch (typeInput) {
+                        case "NAPOJ" -> {
+                            String prod = scanner.nextLine();
+                            Product p = getProductDrink(prod);
+                            if (p == null) {
+                                System.out.println("Błąd przy dodawaniu produktu");
+                                break;
+                            }
+                            menu.addProduct(p);
+                        }
+                        case "JEDZENIE" -> {
+                            String prod = scanner.nextLine();
+                            Product p = getProductFood(prod);
+                            if (p == null) {
+                                System.out.println("Błąd przy dodawaniu produktu");
+                                break;
+                            }
+                            menu.addProduct(p);
+                        }
+                        case "exit" -> {
+                            System.out.println("Do widzenia");
+                            System.exit(0);
+                        }
+                        default -> {
+                            System.out.println("Bład: niepoprawne  wejście");
+                        }
                     }
                 }
-                break;
+            }
         }
     }
 
     private static Product getProductDrink(String line) {
-        String[] splitted = line.split(";");
-        return new Drink(
-                splitted[0],                        // Name
-                Float.parseFloat(splitted[1]),      // price
-                Integer.parseInt(splitted[2]),      // availableCount
-                Double.parseDouble(splitted[3]),    // alcoholAmount
-                Integer.parseInt(splitted[4])       // volume
-        );
+        //sprawdzanie poprawności wpisywanego tekstu
+        if (!line.contains(";")){
+            return null;
+        }
+
+        String[] strLine = line.split(";");
+        if (strLine.length == 5){
+            return new Drink(
+                    strLine[0],                        // Name
+                    Float.parseFloat(strLine[1]),      // price
+                    Integer.parseInt(strLine[2]),      // availableCount
+                    Double.parseDouble(strLine[3]),    // alcoholAmount
+                    Integer.parseInt(strLine[4])       // volume
+            );
+        }
+        return null;
     }
 
-    private static Product getProductFood(String prod2) {
-        String[] splitted = prod2.split(";");
-        return new Food(
-                splitted[0],                       // name
-                Float.parseFloat(splitted[1]),     // price
-                Integer.parseInt(splitted[2]),     // availableCount
-                Integer.parseInt(splitted[3]),     // weight
-                Boolean.parseBoolean(splitted[4]), // isVege
-                Integer.parseInt(splitted[5])      // calories
-        );
+    private static Product getProductFood(String line) {
+        //sprawdzanie poprawności wpisywanego tekstu
+        if (!line.contains(";")) {
+            return null;
+        }
+
+        String[] strLine = line.split(";");
+        if (strLine.length == 6) {
+            return new Food(
+                    strLine[0],                       // name
+                    Float.parseFloat(strLine[1]),     // price
+                    Integer.parseInt(strLine[2]),     // availableCount
+                    Integer.parseInt(strLine[3]),     // weight
+                    Boolean.parseBoolean(strLine[4]), // isVege
+                    Integer.parseInt(strLine[5])      // calories
+            );
+        }
+        return null;
     }
 }
