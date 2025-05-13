@@ -21,6 +21,7 @@ public class App {
 
     public App() {
         app();
+        server.closeDay();
     }
 
     private void app() {

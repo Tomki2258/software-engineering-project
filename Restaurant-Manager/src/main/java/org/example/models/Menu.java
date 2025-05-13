@@ -35,9 +35,12 @@ public class Menu implements IMenu {
             System.out.println(product.describe());
         }
     }
+
     public void printMenuProducts() {
         for (Product product : productList) {
-            System.out.println(product.describeMenu());
+            String response = String.format("%d %s", productList.indexOf(product) + 1
+                    , product.describeMenu());
+            System.out.println(response);
         }
     }
 
@@ -54,16 +57,15 @@ public class Menu implements IMenu {
     }
 
     @Override
-    public List<IProduct> getProductList() {
-        List<IProduct> newList = new ArrayList<>(productList);
-        return newList;
+    public List<Product> getProductList() {
+        return productList;
     }
 
     public void save() {
         try {
             FileWriter writer = new FileWriter(String.valueOf(PRODUCTS_PATH));
             StringBuilder toSave = new StringBuilder();
-            for (Product product : productList){
+            for (Product product : productList) {
                 toSave.append(product.csv()).append("\n");
             }
 

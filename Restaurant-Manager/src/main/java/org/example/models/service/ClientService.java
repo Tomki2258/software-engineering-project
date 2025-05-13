@@ -12,24 +12,31 @@ public class ClientService {
     private final Staff staff;
     private Order order = new Order();
     private Menu menu = new Menu();
-    public ClientService(Client client,Staff staff){
+
+    public ClientService(Client client, Staff staff) {
         this.client = client;
         this.staff = staff;
 
         App();
+        menu.save();
     }
-    private void App(){
+
+    private void App() {
         System.out.println("Witamy w restauracji\nWybierz opcje\n1:Pokaż produkty\n2:Dodaj produkt");
         Scanner scanner = new Scanner(System.in);
         String input = scanner.nextLine();
-        switch (input){
+        switch (input) {
             case "1":
                 menu.printMenuProducts();
                 break;
             case "2":
                 menu.printMenuProducts();
-                // TODO dodawanie do order
-                // TODO odejmowanie ilości danego przedniotu z listy / sprawdzanie czy można go wgl dodać
+                System.out.println("Podaj index produktu do dodania");
+                input = scanner.nextLine();
+                int inputInt = Integer.parseInt(input) - 1;
+                if (order.addProduct(menu.getProductList().get(inputInt),client,staff)) {
+                    menu.getProductList().get(inputInt).reduceAvailableCount();
+                }
                 break;
             case "3":
                 // TODO opłacenie zamówienia i elo

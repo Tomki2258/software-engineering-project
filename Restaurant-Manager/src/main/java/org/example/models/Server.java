@@ -48,7 +48,7 @@ public class Server {
      - ile zarobiliśmy
      */
     public void closeDay() {
-
+        System.out.println("Do widzenia");
     }
 
     public void addRachunek(IRachunek rachunek) {

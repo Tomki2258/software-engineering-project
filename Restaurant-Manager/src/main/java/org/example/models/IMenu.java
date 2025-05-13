@@ -8,5 +8,5 @@ import java.util.List;
 public interface IMenu {
     public boolean addProduct(Product product);
     public boolean removeProduct(int index);
-    public List<IProduct> getProductList();
+    public List<Product> getProductList();
 }

@@ -28,6 +28,9 @@ public abstract class Product implements IProduct {
     public int getAvailableCount() {
         return availableCount;
     }
+    public void reduceAvailableCount(){
+        this.availableCount--;
+    }
 
     @Override
     public void setPrice(float price) {
