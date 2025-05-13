@@ -1,12 +1,22 @@
 package org.example.models.product;
 
+import java.util.UUID;
+
 public class Food extends Product {
     private int weight;
     private boolean isVege;
     private int calories;
 
-    public Food(String UID,String name,float price, int availableCount, int weight, boolean isVege, int calories) {
+    public Food(String UID, String name, float price, int availableCount, int weight, boolean isVege, int calories) {
         super(price, name, availableCount, UID);
+        this.weight = weight;
+        this.isVege = isVege;
+        this.calories = calories;
+    }
+
+    //konstruktor do generowania nowych produktów
+    public Food(String name,float price, int availableCount, int weight, boolean isVege, int calories) {
+        super(price, name, availableCount, UUID.randomUUID().toString());
         this.weight = weight;
         this.isVege = isVege;
         this.calories = calories;
