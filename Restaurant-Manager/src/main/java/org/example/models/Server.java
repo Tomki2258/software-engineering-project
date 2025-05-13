@@ -1,26 +1,22 @@
 package org.example.models;
 
-import org.example.models.product.Drink;
-import org.example.models.product.Food;
-import org.example.models.product.Product;
-import org.example.models.rachunek.IRachunek;
+import org.example.factories.BillFactory;
+import org.example.models.rachunek.Bill;
+import org.example.models.rachunek.IBill;
 import org.example.models.staff.IStaff;
 import org.example.models.staff.Staff;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class Server {
     private List<Staff> staffList = new ArrayList<>();
-    private List<IRachunek> rachunekList = new ArrayList<>();
+    private List<Bill> billList = new ArrayList<>();
     // TODO ogarnąć co z rachunkami będziem robić
     private static final URI STAFF_PATH = URI.create("src/main/java/org/example/data/staff.csv");
-    private IMenu menu;
-
+    private IMenu menu = new Menu();
+    private BillFactory billFactory = new BillFactory();
     public Server(IMenu menu) {
         this.menu = menu;
     }
@@ -49,13 +45,14 @@ public class Server {
      */
     public void closeDay() {
         System.out.println("Do widzenia");
+        billFactory.save(billList);
     }
 
-    public void addRachunek(IRachunek rachunek) {
-        rachunekList.add(rachunek);
+    public void addBill(Bill rachunek) {
+        billList.add(rachunek);
     }
 
-    public List<IRachunek> returnRachunek() {
-        return new ArrayList<>(rachunekList);
+    public List<IBill> returnBill() {
+        return new ArrayList<>(billList);
     }
 }

@@ -31,4 +31,7 @@ public class Order {
             System.out.println(response);
         }
     }
+    public List<Product> getProductList(){
+        return productList;
+    }
 }

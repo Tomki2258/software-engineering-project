@@ -37,7 +37,8 @@ public class App {
                 Optional<Client> resultClient = authService.loginAsClient(login, password);
                 if (resultClient.isPresent()) {
                     ClientService clientService = new ClientService(resultClient.get()
-                            , staffFactory.loadStaff().getFirst());
+                            , staffFactory.loadStaff().getFirst(),
+                            server);
                 }
                 break;
             case "2":

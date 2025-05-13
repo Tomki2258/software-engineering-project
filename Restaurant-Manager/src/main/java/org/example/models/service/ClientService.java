@@ -2,9 +2,12 @@ package org.example.models.service;
 
 import org.example.models.Menu;
 import org.example.models.Order;
+import org.example.models.Server;
 import org.example.models.client.Client;
+import org.example.models.rachunek.Bill;
 import org.example.models.staff.Staff;
 
+import java.io.Serial;
 import java.util.Scanner;
 
 public class ClientService {
@@ -12,12 +15,15 @@ public class ClientService {
     private final Staff staff;
     private Order order = new Order();
     private Menu menu = new Menu();
-
-    public ClientService(Client client, Staff staff) {
+    private boolean working = true;
+    private final Server server;
+    public ClientService(Client client, Staff staff,Server server) {
         this.client = client;
         this.staff = staff;
-
-        App();
+        this.server = server;
+        while(working) {
+            App();
+        }
         menu.save();
     }
 
@@ -39,10 +45,25 @@ public class ClientService {
                 }
                 break;
             case "3":
-                // TODO opłacenie zamówienia i elo
+                finalizeBill();
                 break;
             default:
                 break;
         }
+    }
+    private void finalizeBill(){
+        Bill bill = new Bill(order);
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Chcesz dać napiwek (TAK/NIE)?");
+        String input = scanner.nextLine();
+        if(input.equals("TAK")){
+            System.out.println("Podaj kwote napiwku");
+            float tip = scanner.nextFloat();
+            bill.setTip(tip);
+        }
+        bill.close();
+        bill.describe();
+        working = false;
+        server.addBill(bill);
     }
 }
