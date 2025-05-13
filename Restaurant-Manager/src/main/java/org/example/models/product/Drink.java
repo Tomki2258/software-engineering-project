@@ -1,11 +1,21 @@
 package org.example.models.product;
 
+import java.util.UUID;
+
 public class Drink extends Product {
     private double alcoholAmount;
     private int volume;
 
     public Drink(String UID, String name, float price, int availableCount, double alcoholAmount, int volume) {
         super(price, name, availableCount, UID);
+        this.alcoholAmount = alcoholAmount;
+        this.volume = volume;
+    }
+
+
+    //konstruktor do generowania nowych produktów
+    public Drink(String name, float price, int availableCount, double alcoholAmount, int volume) {
+        super(price, name, availableCount, UUID.randomUUID().toString());
         this.alcoholAmount = alcoholAmount;
         this.volume = volume;
     }
