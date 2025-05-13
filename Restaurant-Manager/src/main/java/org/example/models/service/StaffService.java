@@ -6,9 +6,7 @@ import org.example.models.product.Food;
 import org.example.models.product.Product;
 import org.example.models.staff.Staff;
 
-import java.lang.classfile.constantpool.PoolEntry;
 import java.util.Scanner;
-import java.util.UUID;
 
 public class StaffService {
     private Menu menu = new Menu();
@@ -32,17 +30,20 @@ public class StaffService {
                 String typeInput = scanner.nextLine();
                 System.out.println("Podaj dane produktu do dodania (spacje zastąp znakiem ';')");
                 switch (typeInput){
-                    case "NAPOJ":
+                    case "NAPOJ" -> {
                         String prod = scanner.nextLine();
                         Product p = getProductDrink(line);
                         menu.addProduct(p);
-
-                        break;
-                    case "JEDZENIE":
+                    }
+                    case "JEDZENIE" -> {
                         String prod2 = scanner.nextLine();
                         Product p2 = getProductFood(prod2);
                         menu.addProduct(p2);
-                        break;
+                    }
+                    default -> {
+                        System.out.println("Bład: niepoprawne  wejście");
+                        System.exit(0);
+                    }
                 }
                 break;
         }
@@ -61,14 +62,14 @@ public class StaffService {
     }
 
     private static Product getProductFood(String prod2) {
-        String[] splitted2 = prod2.split(";");
+        String[] splitted = prod2.split(";");
         Product p2 = new Food(
-                splitted2[0],                       // name
-                Float.parseFloat(splitted2[1]),     // price
-                Integer.parseInt(splitted2[2]),     // availableCount
-                Integer.parseInt(splitted2[3]),     // weight
-                Boolean.parseBoolean(splitted2[4]), // isVege
-                Integer.parseInt(splitted2[5])      // calories
+                splitted[0],                       // name
+                Float.parseFloat(splitted[1]),     // price
+                Integer.parseInt(splitted[2]),     // availableCount
+                Integer.parseInt(splitted[3]),     // weight
+                Boolean.parseBoolean(splitted[4]), // isVege
+                Integer.parseInt(splitted[5])      // calories
         );
         return p2;
     }
