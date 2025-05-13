@@ -9,13 +9,10 @@ import org.example.models.staff.Staff;
 import java.util.Scanner;
 
 public class StaffService {
-    private Menu menu = new Menu();
-    private final Staff staff;
-    public StaffService(Staff staff){
-        this.staff = staff;
+    private final Menu menu = new Menu();
 
-        App();
-    }
+    public StaffService(Staff staff){ App(); }
+
     private void App(){
         System.out.println("Menu dla obsługi\n1:Wypisz aktualne produkti\n2:Dodaj produkt");
         Scanner scanner = new Scanner(System.in);
@@ -25,20 +22,19 @@ public class StaffService {
                 menu.printProducts();
                 break;
             case "2":
-                String line = scanner.nextLine();
                 System.out.println("Który typ produktu chcesz dodać?");
                 String typeInput = scanner.nextLine();
                 System.out.println("Podaj dane produktu do dodania (spacje zastąp znakiem ';')");
                 switch (typeInput){
                     case "NAPOJ" -> {
                         String prod = scanner.nextLine();
-                        Product p = getProductDrink(line);
+                        Product p = getProductDrink(prod);
                         menu.addProduct(p);
                     }
                     case "JEDZENIE" -> {
-                        String prod2 = scanner.nextLine();
-                        Product p2 = getProductFood(prod2);
-                        menu.addProduct(p2);
+                        String prod = scanner.nextLine();
+                        Product p = getProductFood(prod);
+                        menu.addProduct(p);
                     }
                     default -> {
                         System.out.println("Bład: niepoprawne  wejście");
@@ -51,19 +47,18 @@ public class StaffService {
 
     private static Product getProductDrink(String line) {
         String[] splitted = line.split(";");
-        Product p = new Drink(
+        return new Drink(
                 splitted[0],                        // Name
                 Float.parseFloat(splitted[1]),      // price
                 Integer.parseInt(splitted[2]),      // availableCount
                 Double.parseDouble(splitted[3]),    // alcoholAmount
                 Integer.parseInt(splitted[4])       // volume
         );
-        return p;
     }
 
     private static Product getProductFood(String prod2) {
         String[] splitted = prod2.split(";");
-        Product p2 = new Food(
+        return new Food(
                 splitted[0],                       // name
                 Float.parseFloat(splitted[1]),     // price
                 Integer.parseInt(splitted[2]),     // availableCount
@@ -71,6 +66,5 @@ public class StaffService {
                 Boolean.parseBoolean(splitted[4]), // isVege
                 Integer.parseInt(splitted[5])      // calories
         );
-        return p2;
     }
 }
