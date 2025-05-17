@@ -12,8 +12,8 @@ import org.example.models.client.Client;
 
 public class AuthService { private List<Client> clientList = new ArrayList<>();
     private List<Staff> staffList = new ArrayList<>();
-    public AuthService(ClientFactory clientFactory,StaffFactory staffFactory) {
-        clientList = clientFactory.load();
+    public AuthService(List<Client> clientList,StaffFactory staffFactory) {
+        this.clientList = clientList;
         staffList = staffFactory.loadStaff();
     }
 

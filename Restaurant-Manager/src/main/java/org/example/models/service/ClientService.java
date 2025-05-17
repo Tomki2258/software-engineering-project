@@ -8,7 +8,6 @@ import org.example.models.client.Client;
 import org.example.models.rachunek.Bill;
 import org.example.models.staff.Staff;
 
-import java.io.Serial;
 import java.util.Scanner;
 
 public class ClientService {
@@ -74,7 +73,7 @@ public class ClientService {
         if(client.reduceMoneyAmount(bill.getTotalValue())){
             bill.describe();
             working = false;
-            server.addBill(bill);
+            server.proceedBill(bill);
         }else{
             throw new NoMoneyException(client);
         }
