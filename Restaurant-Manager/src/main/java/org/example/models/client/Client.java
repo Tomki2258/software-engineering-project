@@ -25,7 +25,7 @@ public class Client {
         this.uid = uid;
     }
     // Ludzki dla mnie konstruktor - tomek
-    public Client(String uid,int age,int money,String login,String password){
+    public Client(String uid,int age,float money,String login,String password){
         this.uid =uid;
         this.wiek = age;
         this.moneyAmount = money;
@@ -70,6 +70,6 @@ public class Client {
         return true;
     }
     public String toCSV(){
-        return String.format("%s;%d;%d",this.uid,this.wiek,this.moneyAmount);
+        return String.format("%s;%d;%f;%s;%s",this.uid,this.wiek,this.moneyAmount,this.login,this.password);
     }
 }

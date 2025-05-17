@@ -13,7 +13,7 @@ import java.util.Scanner;
 
 public class ClientFactory {
     private static final URI CLIENT_PATH = URI.create("src/main/java/org/example/data/client.csv");
-
+    
     public List<Client> load(){
         List<Client> loaded = new ArrayList<>();
         File file = new File(String.valueOf(CLIENT_PATH));
@@ -33,7 +33,7 @@ public class ClientFactory {
         return new Client(
                 splitted[0],
                 Integer.parseInt(splitted[1]),
-                Integer.parseInt(splitted[2]),
+                Float.parseFloat(splitted[2]),
                 splitted[3],
                 splitted[4]
         );
