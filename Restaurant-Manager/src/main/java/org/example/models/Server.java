@@ -1,8 +1,8 @@
 package org.example.models;
 
+import org.example.Repositories.BillRepository;
 import org.example.factories.BillFactory;
 import org.example.models.rachunek.Bill;
-import org.example.models.rachunek.IBill;
 import org.example.models.staff.IStaff;
 import org.example.models.staff.Staff;
 
@@ -12,11 +12,13 @@ import java.util.List;
 
 public class Server {
     private List<Staff> staffList = new ArrayList<>();
-    private List<Bill> billList = new ArrayList<>();
     // TODO ogarnąć co z rachunkami będziem robić
     private static final URI STAFF_PATH = URI.create("src/main/java/org/example/data/staff.csv");
     private IMenu menu = new Menu();
     private BillFactory billFactory = new BillFactory();
+    private BillRepository billRepository = new BillRepository(
+            billFactory.load()
+    );
     public Server(IMenu menu) {
         this.menu = menu;
     }
@@ -47,14 +49,14 @@ public class Server {
      */
     public void closeDay() {
         System.out.println("Do widzenia");
-        billFactory.save(billList);
+        billRepository.save();
     }
 
-    public void addBill(Bill rachunek) {
-        billList.add(rachunek);
+    public void proceedBill(Bill rachunek) {
+        billRepository.addBill(rachunek);
     }
 
-    public List<IBill> returnBill() {
-        return new ArrayList<>(billList);
+    public List<Bill> returnBill() {
+        return billRepository.getBills();
     }
 }

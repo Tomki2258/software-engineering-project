@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.Repositories.ClientRepository;
 import org.example.factories.ClientFactory;
 import org.example.factories.StaffFactory;
 import org.example.models.Server;
@@ -16,12 +17,16 @@ public class App {
     private final ClientFactory clientFactory = new ClientFactory();
     private final StaffFactory staffFactory = new StaffFactory();
     private final Server server = new Server();
-
-    private final AuthService authService = new AuthService(clientFactory, staffFactory);
+    private final ClientRepository clientRepository = new ClientRepository(
+            clientFactory.load()
+    );
+    private final AuthService authService = new AuthService(
+            clientRepository.getClientList(), staffFactory);
 
     public App() {
         app();
         server.closeDay();
+        clientRepository.save();
     }
 
     private void app() {
