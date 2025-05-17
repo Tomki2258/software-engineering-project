@@ -10,9 +10,6 @@ public class BillFactory {
     final String PATH = "src/main/java/org/example/data/bills.json";
     private com.umcsuser.carrent.utils.JsonFileStorage<Bill> storage = new JsonFileStorage<Bill>(PATH, new TypeToken<List<Bill>>(){}.getType());
 
-    public void save(List<Bill> billList){
-        storage.save(billList);
-    }
     public List<Bill> load(){
         return storage.load();
     }
