@@ -10,14 +10,23 @@ import java.util.Scanner;
 
 public class StaffService {
     private final Menu menu = new Menu();
+    private boolean working = true;
 
-    public StaffService(Staff staff){ App(); }
+    public StaffService(Staff staff){
+        while (working) {
+            App();
+        }
+    }
 
     private void App() {
-        System.out.println(
-                "Menu dla obsługi"
-                + "\n1:Wypisz aktualne produkty"
-                + "\n2:Dodaj produkt"
+        System.out.println("""
+                Menu dla obsługi
+                1:Wypisz aktualne produkty
+                2:Dodaj produkt
+                3:Usuń produkt
+                
+                9:Wyjdź
+                """
         );
 
         Scanner scanner = new Scanner(System.in);
@@ -34,9 +43,10 @@ public class StaffService {
                         "Podaj dane produktu do dodania (spacje zastąp znakiem ';')" +
                                 "\nJeżeli chcesz wyjść, napisz 'exit'"
                 );
-                while (true) {
+//                while (true) {
                     switch (typeInput) {
                         case "NAPOJ" -> {
+                            System.out.println("Nazwa;Cena;Ilość;ZawartośćAlkoholu;Objętość");
                             String prod = scanner.nextLine();
                             Product p = getProductDrink(prod);
                             if (p == null) {
@@ -46,6 +56,7 @@ public class StaffService {
                             menu.addProduct(p);
                         }
                         case "JEDZENIE" -> {
+                            System.out.println("Nazwa;Cena;Ilość;Waga;CzyVege(true/false);Kalorie");
                             String prod = scanner.nextLine();
                             Product p = getProductFood(prod);
                             if (p == null) {
@@ -54,15 +65,28 @@ public class StaffService {
                             }
                             menu.addProduct(p);
                         }
-                        case "exit" -> {
-                            System.out.println("Do widzenia");
-                            System.exit(0);
-                        }
+//                        case "exit" -> {
+//                            System.out.println("Do widzenia");
+//                            System.exit(0);
+//                        }
                         default -> {
                             System.out.println("Błąd: niepoprawne wejście");
                         }
                     }
-                }
+//                }
+            }
+            case "3" -> {
+                System.out.println("Który produkt chcesz usunąć? (podaj jego index)");
+                int indexInput = scanner.nextInt();
+                if (menu.removeProduct(indexInput)) System.out.println("Operacja powiodła się");    // remove product zawsze zwraca true
+                else System.out.println("Operacja nie powiodła się");
+            }
+            case "9" -> {
+                working = false;
+            }
+
+            default -> {
+                System.out.println("Niepoprawna opcja");
             }
         }
     }

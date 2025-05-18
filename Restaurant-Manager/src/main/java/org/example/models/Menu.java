@@ -31,8 +31,10 @@ public class Menu implements IMenu {
     }
 
     public void printProducts() {
+        int index = 0;
         for (Product product : productList) {
-            System.out.println(product.describe());
+            System.out.println(index + " " + product.describe());
+            index++;
         }
     }
 

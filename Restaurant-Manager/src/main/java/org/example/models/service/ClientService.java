@@ -36,6 +36,7 @@ public class ClientService {
                 2:Dodaj produkt do koszyka
                 3:Zapłać
                 """);
+        //TODO - dodać możliwość wyjścia wcześniejszego? (wiązałoby się to z przywróceniem tego co było w koszyku)
         Scanner scanner = new Scanner(System.in);
         String input = scanner.nextLine();
         switch (input) {
