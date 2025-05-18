@@ -16,7 +16,7 @@ public class StaffService {
     private void App() {
         System.out.println(
                 "Menu dla obsługi"
-                + "\n1:Wypisz aktualne produkti"
+                + "\n1:Wypisz aktualne produkty"
                 + "\n2:Dodaj produkt"
         );
 
@@ -27,12 +27,12 @@ public class StaffService {
                 menu.printProducts();
             }
             case "2" -> {
-                System.out.println("Który typ produktu chcesz dodać?");
-
+                System.out.println("Który typ produktu chcesz dodać?\nNAPOJ / JEDZENIE");
                 String typeInput = scanner.nextLine();
+
                 System.out.println(
                         "Podaj dane produktu do dodania (spacje zastąp znakiem ';')" +
-                                "\nJeżeli chcesz wyjśc, napisz 'exit'"
+                                "\nJeżeli chcesz wyjść, napisz 'exit'"
                 );
                 while (true) {
                     switch (typeInput) {
@@ -59,7 +59,7 @@ public class StaffService {
                             System.exit(0);
                         }
                         default -> {
-                            System.out.println("Bład: niepoprawne  wejście");
+                            System.out.println("Błąd: niepoprawne wejście");
                         }
                     }
                 }

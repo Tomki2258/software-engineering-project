@@ -38,9 +38,11 @@ public class Menu implements IMenu {
 
     public void printMenuProducts() {
         for (Product product : productList) {
-            String response = String.format("%d %s", productList.indexOf(product) + 1
-                    , product.describeMenu());
-            System.out.println(response);
+            if (product.isAvailable()) {
+                String response = String.format("%d %s", productList.indexOf(product) + 1
+                        , product.describeMenu());
+                System.out.println(response);
+            }
         }
     }
 

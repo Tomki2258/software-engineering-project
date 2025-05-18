@@ -22,6 +22,7 @@ public class ClientService {
         this.client = client;
         this.staff = staff;
         this.server = server;
+        System.out.println("Witamy w restauracji");
         while (working) {
             App();
         }
@@ -29,7 +30,12 @@ public class ClientService {
     }
 
     private void App() {
-        System.out.println("Witamy w restauracji\nWybierz opcje\n1:Pokaż produkty\n2:Dodaj produkt");
+        System.out.println("""
+                Wybierz opcje
+                1:Pokaż produkty
+                2:Dodaj produkt do koszyka
+                3:Zapłać
+                """);
         Scanner scanner = new Scanner(System.in);
         String input = scanner.nextLine();
         switch (input) {
@@ -54,7 +60,7 @@ public class ClientService {
             }
 
             default -> {
-
+                System.out.println("Niepoprawna opcja");
             }
         }
     }
