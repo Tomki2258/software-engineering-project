@@ -30,31 +30,58 @@ public class App {
     }
 
     private void app() {
-        System.out.println("Wybierz typ użytkownika\n1:Klient\n2:Obsluga");
         Scanner scanner = new Scanner(System.in);
-        String input = scanner.nextLine();
-        System.out.println("Podaj login");
-        String login = scanner.nextLine();
-        System.out.println("Podaj haslo");
-        String password = scanner.nextLine();
-        switch (input) {
-            case "1":
-                Optional<Client> resultClient = authService.loginAsClient(login, password);
-                if (resultClient.isPresent()) {
-                    ClientService clientService = new ClientService(resultClient.get()
-                            , staffFactory.loadStaff().getFirst(),
-                            server);
-                }
-                break;
-            case "2":
-                Optional<Staff> resultStaff = authService.loginAsStaff(login, password);
-                if (resultStaff.isPresent()) {
-                    StaffService staffService = new StaffService(resultStaff.get());
-                }
-                break;
-            default:
-                System.out.println("wybrano zły typ");
-                break;
+        String login;
+        String password;
+        boolean loginLoop = true;
+
+        while(loginLoop) {
+            System.out.println("""
+                Wybierz typ użytkownika
+                1:Klient
+                2:Obsluga
+                
+                9:Wyjście
+                """);
+            String input = scanner.nextLine();
+
+            switch (input) {
+                case "1":
+                    System.out.println("Podaj login");
+                    login = scanner.nextLine();
+                    System.out.println("Podaj haslo");
+                    password = scanner.nextLine();
+                    Optional<Client> resultClient = authService.loginAsClient(login, password);
+                    if (resultClient.isPresent()) {
+                        ClientService clientService = new ClientService(resultClient.get()
+                                , staffFactory.loadStaff().getFirst(),
+                                server);
+                    }
+                    else {
+                        System.out.println("Logowanie nie powiodło się\n");
+                    }
+                    break;
+                case "2":
+                    System.out.println("Podaj login");
+                    login = scanner.nextLine();
+                    System.out.println("Podaj haslo");
+                    password = scanner.nextLine();
+                    Optional<Staff> resultStaff = authService.loginAsStaff(login, password);
+                    if (resultStaff.isPresent()) {
+                        StaffService staffService = new StaffService(resultStaff.get());
+                    }
+                    else {
+                        System.out.println("Logowanie nie powiodło się\n");
+                    }
+                    break;
+                case "9":
+                    loginLoop = false;
+                    break;
+
+                default:
+                    System.out.println("wybrano zły typ");
+                    break;
+            }
         }
     }
 }
