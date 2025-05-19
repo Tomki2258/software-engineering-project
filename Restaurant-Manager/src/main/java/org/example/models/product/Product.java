@@ -57,4 +57,5 @@ public abstract class Product implements IProduct {
     public abstract String csv();
     public abstract String describe();
     public abstract String describeMenu();
+    public abstract boolean verification();
 }

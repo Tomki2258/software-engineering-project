@@ -30,7 +30,7 @@ public class Order {
         if (productList.size() <= index) {
             return false;
         }
-        productList.get(index).increaseAvailableCount();
+        productList.get(index).resupplyProduct(1);
         productList.remove(index);
         return true;
     }
