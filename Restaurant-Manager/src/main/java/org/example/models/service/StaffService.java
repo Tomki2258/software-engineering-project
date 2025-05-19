@@ -40,8 +40,8 @@ public class StaffService {
                 String typeInput = scanner.nextLine();
 
                 System.out.println(
-                        "Podaj dane produktu do dodania (spacje zastąp znakiem ';')" +
-                                "\nJeżeli chcesz wyjść, napisz 'exit'"
+                        "Podaj dane produktu do dodania (spacje zastąp znakiem ';')"
+                        + "\nJeżeli chcesz wyjść, napisz 'exit'"
                 );
 //                while (true) {
                     switch (typeInput) {
