@@ -28,15 +28,12 @@ public abstract class Product implements IProduct {
     public int getAvailableCount() {
         return availableCount;
     }
-
     public void reduceAvailableCount(){
         this.availableCount--;
     }
-
-    public void increaseAvailableCount() {
-        this.availableCount++;
+    public void resupplyProduct(int amount){
+        this.availableCount += amount;
     }
-
     @Override
     public void setPrice(float price) {
         this.price = price;
@@ -60,5 +57,4 @@ public abstract class Product implements IProduct {
     public abstract String csv();
     public abstract String describe();
     public abstract String describeMenu();
-    public abstract boolean verification();
 }
