@@ -17,20 +17,12 @@ public class Bill implements IBill {
 
     public Bill(Order order) {
         this.order = order;
-        this.orderValue = calculateOrder();
+        this.orderValue = 0;
         this.tip = 0;
         this.isFinalized = false;
         this.openDate = String.valueOf(LocalDateTime.now());
         this.finalizedDate = null;
         this.UID = UUID.randomUUID().toString();
-    }
-
-    private float calculateOrder() {
-        float sum = 0;
-        for (Product product : order.getProductList()) {
-            sum += product.getPrice();
-        }
-        return sum;
     }
 
     public void addOrder(Order order) {
@@ -54,7 +46,7 @@ public class Bill implements IBill {
     }
 
     public float getTotalValue() {
-        return orderValue + tip;
+        return order.calculateValue() + tip;
     }
     public void close(){
         this.finalizedDate = String.valueOf(LocalDateTime.now());

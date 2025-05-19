@@ -34,4 +34,11 @@ public class Order {
     public List<Product> getProductList(){
         return productList;
     }
+    public float calculateValue(){
+        float sum = 0;
+        for (Product product : productList){
+            sum += product.getPrice();
+        }
+        return sum;
+    }
 }
