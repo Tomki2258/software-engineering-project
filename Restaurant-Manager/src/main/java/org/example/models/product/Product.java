@@ -31,7 +31,9 @@ public abstract class Product implements IProduct {
     public void reduceAvailableCount(){
         this.availableCount--;
     }
-
+    public void resupplyProduct(int amount){
+        this.availableCount += amount;
+    }
     @Override
     public void setPrice(float price) {
         this.price = price;

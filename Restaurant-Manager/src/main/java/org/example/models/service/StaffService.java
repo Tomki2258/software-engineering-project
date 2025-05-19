@@ -24,7 +24,7 @@ public class StaffService {
                 1:Wypisz aktualne produkty
                 2:Dodaj produkt
                 3:Usuń produkt
-                
+                4:Uzupełnij produkt
                 9:Wyjdź
                 """
         );
@@ -80,6 +80,15 @@ public class StaffService {
                 int indexInput = scanner.nextInt();
                 if (menu.removeProduct(indexInput)) System.out.println("Operacja powiodła się");    // remove product zawsze zwraca true
                 else System.out.println("Operacja nie powiodła się");
+            }
+            case "4" -> {
+                System.out.println("Podaj id produktu do uzupełnienia");
+                menu.printProducts();
+                String pID = scanner.nextLine();
+                System.out.println("Podaj ilość sztuk do uzupełnienia");
+                String amount = scanner.nextLine();
+                menu.modyfiProductAmount(
+                        Integer.parseInt(pID), Integer.parseInt(amount));
             }
             case "9" -> {
                 working = false;
