@@ -32,32 +32,56 @@ public class ClientService {
     private void App() {
         System.out.println("""
                 Wybierz opcje
-                1:Pokaż produkty
-                2:Dodaj produkt do koszyka
-                3:Zapłać
+                1:Pokaż menu
+                2:Pokaż koszyk
+                3:Dodaj produkt do koszyka
+                4:Usuń produkt z koszyka
+                5:Zapłać
+                
+                9:Anuluj zamówienie i wyjdź
                 """);
-        //TODO - dodać możliwość wyjścia wcześniejszego? (wiązałoby się to z przywróceniem tego co było w koszyku)
         Scanner scanner = new Scanner(System.in);
         String input = scanner.nextLine();
         switch (input) {
+            // TODO problem jest że wyświetlają się ilości danych produktów jakby globalnie
+            //  - jak dodamy dwa te same produkty do koszyka, ich ilość będzie się zmieniała
+            //  i ogólnie wskazywała tą która jest pokazywana w menu - imo łatwo temu by było
+            //  zaradzić jeżeli pokazywalibyśmy klientowi mniej informacji
             case "1" -> {
                 menu.printMenuProducts();
             }
             case "2" -> {
+                order.printProducts();
+            }
+            case "3" -> {
                 menu.printMenuProducts();
-                System.out.println("Podaj index produktu do dodania");
+                System.out.println("Podaj numer produktu do dodania");
                 input = scanner.nextLine();
                 int inputInt = Integer.parseInt(input) - 1;
                 if (order.addProduct(menu.getProductList().get(inputInt), client, staff)) {
                     menu.getProductList().get(inputInt).reduceAvailableCount();
                 }
             }
-            case "3" -> {
+            case "4" -> {
+                order.printProducts();
+                System.out.println("Podaj numer produktu do usunięcia");
+                input = scanner.nextLine();
+                int inputInt = Integer.parseInt(input) - 1;
+                if (order.removeProduct(inputInt)) System.out.println("Produkt usunięty poprawnie");
+                else System.out.println("Wystąpił problem z usunięciem produktu - zły numer podany");
+            }
+            case "5" -> {
                 try {
                     finalizeBill();
                 } catch (NoMoneyException e) {
                     throw new RuntimeException(e);
                 }
+            }
+            case "9" -> {
+                for (int i = 0; i < order.orderLength(); i++) {
+                    order.removeProduct(i);
+                }
+                working = false;
             }
 
             default -> {

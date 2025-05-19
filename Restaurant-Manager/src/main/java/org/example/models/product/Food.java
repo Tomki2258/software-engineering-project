@@ -69,4 +69,9 @@ public class Food extends Product {
                 , isVege()
                 ,getCalories());
     }
+
+    @Override
+    public boolean verification() {
+        return false;
+    }
 }

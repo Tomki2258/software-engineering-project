@@ -61,4 +61,10 @@ public class Drink extends Product {
                 , getVolume()
                 , getAlcoholAmount());
     }
+
+    @Override
+    public boolean verification() {
+        if (alcoholAmount > 0) return true;
+        else return false;
+    }
 }

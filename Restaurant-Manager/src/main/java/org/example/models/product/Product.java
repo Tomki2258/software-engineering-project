@@ -28,8 +28,13 @@ public abstract class Product implements IProduct {
     public int getAvailableCount() {
         return availableCount;
     }
+
     public void reduceAvailableCount(){
         this.availableCount--;
+    }
+
+    public void increaseAvailableCount() {
+        this.availableCount++;
     }
 
     @Override
@@ -55,4 +60,5 @@ public abstract class Product implements IProduct {
     public abstract String csv();
     public abstract String describe();
     public abstract String describeMenu();
+    public abstract boolean verification();
 }
