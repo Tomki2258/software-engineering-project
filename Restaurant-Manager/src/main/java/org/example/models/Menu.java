@@ -2,20 +2,14 @@ package org.example.models;
 
 import com.google.gson.reflect.TypeToken;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 import com.umcsuser.carrent.utils.JsonFileStorage;
 import org.example.factories.ProductFactory;
-import org.example.models.product.Drink;
-import org.example.models.product.Food;
-import org.example.models.product.IProduct;
 import org.example.models.product.Product;
 
 public class Menu implements IMenu {
@@ -39,10 +33,12 @@ public class Menu implements IMenu {
     }
 
     public void printMenuProducts() {
+        int index = 1;
         for (Product product : productList) {
             if (product.isAvailable()) {
-                String response = String.format("%d %s", productList.indexOf(product) + 1
+                String response = String.format("%d %s", index
                         , product.describeMenu());
+                index++;
                 System.out.println(response);
             }
         }
@@ -78,5 +74,8 @@ public class Menu implements IMenu {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+    public void modyfiProductAmount(int index,int amount){
+        productList.get(index).resupplyProduct(amount);
     }
 }
