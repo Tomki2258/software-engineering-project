@@ -36,19 +36,14 @@ public class Server {
         return new ArrayList<>(staffList);
     }
 
-    // TODO zrobić to summary (nwm co to ma robić) + ten "zakres"
-    public void summary() {
-
-    }
-
-    // TODO zrobić closeDay bo również nie wiem jak to tak właściwie ma działać
-    /*
-     można to rozomieć jako podsumowanie czyli:
-     - ile zrealizowanych transakcji
-     - ile zarobiliśmy
-     */
     public void closeDay() {
         System.out.println("Do widzenia");
+
+        float sum = 0;
+        for(Bill bill: billRepository.getBills()){
+            sum += bill.getTotalValue();
+        }
+        System.out.println("Dzienny utarg: "+sum+"\nZrealizowanych zamówień: "+billRepository.getBills().size());
         billRepository.save();
     }
 
