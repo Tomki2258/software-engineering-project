@@ -9,19 +9,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.umcsuser.carrent.utils.JsonFileStorage;
+import org.example.Repositories.ProductRepository;
 import org.example.factories.ProductFactory;
 import org.example.models.product.Product;
 
 public class Menu implements IMenu {
     private List<Product> productList = new ArrayList<>();
     private static final URI PRODUCTS_PATH = URI.create("src/main/java/org/example/data/products.csv");
-    private ProductFactory productFactory = new ProductFactory();
+    private ProductRepository productRepository = new ProductRepository(
+            ProductFactory.loadProducts()
+    );
     private final JsonFileStorage<Product> storage =
             new JsonFileStorage<>(String.valueOf(PRODUCTS_PATH), new TypeToken<List<Product>>() {
             }.getType());
 
     public Menu() {
-        productList = productFactory.loadProducts();
+        productList = productRepository.getProductList();
     }
 
     public void printProducts() {
@@ -47,6 +50,7 @@ public class Menu implements IMenu {
     @Override
     public boolean addProduct(Product product) {
         productList.add(product);
+        productRepository.save();
         return true;
     }
 

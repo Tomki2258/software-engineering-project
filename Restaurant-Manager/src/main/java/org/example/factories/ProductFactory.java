@@ -14,7 +14,7 @@ import java.util.Scanner;
 public class ProductFactory {
     private static final URI PRODUCTS_PATH = URI.create("src/main/java/org/example/data/products.csv");
 
-    public Product buildFromLine(List<String> splitted){
+    public static Product buildFromLine(List<String> splitted){
         Product product = null;
         if(splitted.getFirst().equals("DRINK")){
             product = new Drink(
@@ -38,7 +38,7 @@ public class ProductFactory {
         }
         return product;
     }
-    public List<Product> loadProducts() {
+    public static List<Product> loadProducts() {
         List<Product> loaded = new ArrayList<>();
         File file = new File(String.valueOf(PRODUCTS_PATH));
         try {
