@@ -65,20 +65,6 @@ public class Menu implements IMenu {
         return productList;
     }
 
-    public void save() {
-        try {
-            FileWriter writer = new FileWriter(String.valueOf(PRODUCTS_PATH));
-            StringBuilder toSave = new StringBuilder();
-            for (Product product : productList) {
-                toSave.append(product.csv()).append("\n");
-            }
-
-            writer.write(String.valueOf(toSave));
-            writer.close();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
     public void modyfiProductAmount(int index,int amount){
         productList.get(index).resupplyProduct(amount);
     }

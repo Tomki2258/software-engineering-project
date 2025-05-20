@@ -19,7 +19,7 @@ public class ProductRepository {
         return this.productList;
     }
     public void save(){
-        File file = new File(PRODUCTS_PATH);
+        File file = new File(String.valueOf(PRODUCTS_PATH));
         try {
             StringBuilder stringBuilder = new StringBuilder();
             FileWriter fileWriter = new FileWriter(file);

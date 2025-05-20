@@ -26,7 +26,6 @@ public class ClientService {
         while (working) {
             App();
         }
-        menu.save();
     }
 
     private void App() {
