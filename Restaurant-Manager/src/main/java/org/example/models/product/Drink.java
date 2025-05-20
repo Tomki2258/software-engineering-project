@@ -43,9 +43,10 @@ public class Drink extends Product {
 
     @Override
     public String describe() {
-        return String.format("[Drink] UUID:%s Name:%s Price:%f Volume:%d (ML) Alcohol %f"
+        return String.format("[Drink] UUID:%s Name:%s Count: %d Price:%f Volume:%d (ML) Alcohol %f"
                 , super.getUUID()
                 , super.getName()
+                , super.getAvailableCount()
                 , super.getPrice()
                 , getVolume()
                 , getAlcoholAmount());
