@@ -107,12 +107,22 @@ public class StaffService {
 
         String[] strLine = line.split(";");
         if (strLine.length == 5){
+            String name = strLine[0];
+            float price = Float.parseFloat(strLine[1]);
+            int availableCount = Integer.parseInt(strLine[2]);
+            double alcoholAmount = Double.parseDouble(strLine[3]);
+            int volume = Integer.parseInt(strLine[4]);
+
+            if(price == 0 || volume == 0){
+                return null;
+            }
+
             return new Drink(
-                    strLine[0],                        // Name
-                    Float.parseFloat(strLine[1]),      // price
-                    Integer.parseInt(strLine[2]),      // availableCount
-                    Double.parseDouble(strLine[3]),    // alcoholAmount
-                    Integer.parseInt(strLine[4])       // volume
+                    name,                // Name
+                    price,               // price
+                    availableCount,      // availableCount
+                    alcoholAmount,       // alcoholAmount
+                    volume               // volume
             );
         }
         return null;
@@ -125,14 +135,26 @@ public class StaffService {
         }
 
         String[] strLine = line.split(";");
+
         if (strLine.length == 6) {
+            String name = strLine[0];
+            float price = Float.parseFloat(strLine[1]);
+            int availableCount = Integer.parseInt(strLine[2]);
+            int weight = Integer.parseInt(strLine[3]);
+            Boolean isVege = Boolean.parseBoolean(strLine[4]);
+            int calories = Integer.parseInt(strLine[5]);
+
+            if(price == 0 || weight == 0 || calories == 0){
+                return null;
+            }
+
             return new Food(
-                    strLine[0],                       // name
-                    Float.parseFloat(strLine[1]),     // price
-                    Integer.parseInt(strLine[2]),     // availableCount
-                    Integer.parseInt(strLine[3]),     // weight
-                    Boolean.parseBoolean(strLine[4]), // isVege
-                    Integer.parseInt(strLine[5])      // calories
+                    name,               // name
+                    price,              // price
+                    availableCount,     // availableCount
+                    weight,             // weight
+                    isVege,             // isVege
+                    calories            // calories
             );
         }
         return null;
