@@ -11,6 +11,6 @@ public class BillFactory {
     private com.umcsuser.carrent.utils.JsonFileStorage<Bill> storage = new JsonFileStorage<Bill>(PATH, new TypeToken<List<Bill>>(){}.getType());
 
     public List<Bill> load(){
-        return storage.load();
+        return null;
     }
 }

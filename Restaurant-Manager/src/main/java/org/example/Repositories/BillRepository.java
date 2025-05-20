@@ -13,7 +13,7 @@ public class BillRepository {
     private List<Bill> billList = new ArrayList<>();
 
     public BillRepository(List<Bill> billList) {
-        this.billList = billList;
+        this.billList = new ArrayList<>();
     }
 
     public void addBill(Bill bill) {

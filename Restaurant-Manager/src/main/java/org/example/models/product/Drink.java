@@ -11,6 +11,8 @@ public class Drink extends Product {
         this.alcoholAmount = alcoholAmount;
         this.volume = volume;
     }
+    //oto coś jest
+
 
 
     //konstruktor do generowania nowych produktów
@@ -54,10 +56,9 @@ public class Drink extends Product {
 
     @Override
     public String describeMenu() {
-        return String.format("Name:%s Price:%f Count:%d Volume:%d (ML) Alcohol %f"
+        return String.format("Name:%s Price:%f Volume:%d (ML) Alcohol %f"
                 , super.getName()
                 , super.getPrice()
-                , super.getAvailableCount()
                 , getVolume()
                 , getAlcoholAmount());
     }
